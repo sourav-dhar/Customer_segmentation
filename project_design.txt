@@ -1,0 +1,10 @@
+1. data ingestion pipeline:
+    1.config.yaml
+    2.config_entity
+    3.artifact_entity
+    4.constant
+    5.configuation
+    6.utils
+    7.dataingestion.py
+    8.pipeline
+    9.main.py
