@@ -6,4 +6,4 @@ training_pipeline_config:
 data_ingestion_config:
   dataset_download_url: "https://github.com/sourav-dhar/datasets/blob/main/Online%20Retail_new.zip"
   raw_data_dir: raw_data
-  ingested_dir: ingested_data
+  ingested_data_dir: ingested_data

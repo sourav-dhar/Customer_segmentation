@@ -21,6 +21,37 @@ class Configuration:
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         try:
             artifact_dir = self.training_pipeline_config.artifact_dir
+            data_ingestion_artifact_dir = os.path.join(artifact_dir, 
+                                                       DATA_INGESTION_ARTIFACT_DIR,self.time_stamp)
+            
+            # constant folder  # here we call all variable that is under DATA_INGESTION_CONFIG_KEY
+            data_ingestion_info = self.config_info[DATA_INGESTION_CONFIG_KEY]
+            
+            # constant folder -- in constant it is from config.yaml
+            dataset_download_url = data_ingestion_info[DATA_INGESTION_DOWNLOAD_URL_KEY]
+            
+    #raw data
+            raw_data_dir = os.path.join(data_ingestion_artifact_dir,
+                                        data_ingestion_info[DATA_INGESTION_RAW_DATA_DIR_KEY])
+            
+    #ingested data
+            ingested_data_dir = os.path.join(data_ingestion_artifact_dir,
+                                             data_ingestion_info[DATA_INGESTION_INGESTED_DATA_DIR_KEY])
+            
+            data_ingestion_config = DataIngestionConfig(
+                dataset_download_url= dataset_download_url,
+                raw_data_dir=raw_data_dir,
+                ingested_data_dir=ingested_data_dir
+            )
+            
+            return data_ingestion_config
+        
+        except Exception as e:
+            CustomException(e,sys)
+            
+            
+            
+            
             
             
             
