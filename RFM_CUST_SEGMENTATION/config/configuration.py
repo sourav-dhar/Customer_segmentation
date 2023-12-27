@@ -17,6 +17,23 @@ class Configuration:
             self.time_stamp = current_time_stamp
         except Exception as e:
             CustomException(e,sys)
+            
+    def get_training_pipeline_config(self)->TrainingPipelineConfig:
+            try:
+                training_pipeline_config = self.config_info[TRAINING_PIPELINE_CONFIG_KEY]
+
+                artifact_dir = os.path.join(ROOT_DIR,
+                                            training_pipeline_config[TRAINING_PIPLELINE_NAME_KEY],
+                                            training_pipeline_config[TRAINING_PIPELINE_ARTIFACT_DIR_KEY])  
+        
+                training_pipeline_config = TrainingPipelineConfig(artifact_dir=artifact_dir)
+
+                logging.info(f"Training pipeline Config Completed : {training_pipeline_config}")
+
+                return training_pipeline_config
+
+            except Exception as e:
+                raise CustomException(e,sys) from e        
         
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         try:
@@ -43,58 +60,13 @@ class Configuration:
                 raw_data_dir=raw_data_dir,
                 ingested_data_dir=ingested_data_dir
             )
+            logging.info(f"Data Ingestion pipeline Config completed : {data_ingestion_config}")
             
             return data_ingestion_config
         
         except Exception as e:
             CustomException(e,sys)
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-
-
-
-
-def get_training_pipeline_config(self)->TrainingPipelineConfig:
-        try:
-            training_pipeline_config = self.config_info[TRAINING_PIPELINE_CONFIG_KEY]
-
-            artifact_dir = os.path.join(ROOT_DIR,
-                                        training_pipeline_config[TRAINING_PIPLELINE_NAME_KEY],
-                                        training_pipeline_config[TRAINING_PIPELINE_ARTIFACT_DIR_KEY])  
-    
-            training_pipeline_config = TrainingPipelineConfig(artifact_dir=artifact_dir)
-
-            logging.info(f"Training pipeline Config Completed : {training_pipeline_config}")
-
-            return training_pipeline_config
-
-        except Exception as e:
-            raise CustomException(e,sys) from e
+                 
         
+
+            
