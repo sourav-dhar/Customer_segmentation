@@ -18,8 +18,8 @@ SCHEMA_FILE_PATH=os.path.join(ROOT_DIR, CONFIG_DIR, SCHEMA_FILE_NAME)
 
 
 from RFM_CUST_SEGMENTATION.constant.training_pipeline import *
-from RFM_CUST_SEGMENTATION.constant.training_pipeline import data_ingestion
-from RFM_CUST_SEGMENTATION.constant.training_pipeline import data_validation
+from RFM_CUST_SEGMENTATION.constant.training_pipeline.data_ingestion import *
+from RFM_CUST_SEGMENTATION.constant.training_pipeline.data_validation import *
 #from customer_segment.constant.training_pipeline.data_transformation import *
 #from customer_segment.constant.training_pipeline.model_trainer import *
 

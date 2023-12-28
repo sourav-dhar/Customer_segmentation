@@ -1,9 +1,10 @@
 import os,sys
 from RFM_CUST_SEGMENTATION.exception import CustomException
 from RFM_CUST_SEGMENTATION.logger import logging
-from RFM_CUST_SEGMENTATION.entity.config_entity import *
-from RFM_CUST_SEGMENTATION.entity.artifact_entity import *
+from RFM_CUST_SEGMENTATION.entity.config_entity import  TrainingPipelineConfig, DataIngestionConfig, DataValidationConfig
+from RFM_CUST_SEGMENTATION.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
 from RFM_CUST_SEGMENTATION.constant import *
+from RFM_CUST_SEGMENTATION.constant.training_pipeline import *
 from RFM_CUST_SEGMENTATION.utils.utils import read_yaml_file
 
 class Configuration:
@@ -15,13 +16,23 @@ class Configuration:
             self.time_stamp = current_time_stamp
         except Exception as e:
             CustomException(e,sys)
+            
+    def get_data_validation_config(self) -> DataValidationConfig:
+        try:
+            artifact_dir = self.training_pipeline_config.artifact_dir
+            
+            data_validation_artifact_dir = os.path.join(artifact_dir, 
+                                                        DATA_VALIDATION_ARTIFACT_DIR, 
+                                                        self.time_stamp)
+            data_validation_config = 
+        except Exception as e:
+            CustomException(e,sys)
                    
         
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         try:
             artifact_dir = self.training_pipeline_config.artifact_dir
-            data_ingestion_artifact_dir = os.path.join(artifact_dir, 
-                                                       DATA_INGESTION_ARTIFACT_DIR,self.time_stamp)
+            data_ingestion_artifact_dir = os.path.join(artifact_dir,DATA_INGESTION_ARTIFACT_DIR, self.time_stamp)
             
             # constant folder  # here we call all variable that is under DATA_INGESTION_CONFIG_KEY
             data_ingestion_info = self.config_info[DATA_INGESTION_CONFIG_KEY]
@@ -48,6 +59,12 @@ class Configuration:
         
         except Exception as e:
             CustomException(e,sys)
+            
+    def get_data_validation_config(self) -> DataValidationConfig:
+        
+            
+
+            
                  
         
     def get_training_pipeline_config(self)->TrainingPipelineConfig:
