@@ -10,7 +10,7 @@ class CustomException(Exception):
     @staticmethod
     def get_detailed_error_message(error_message:Exception,error_details:sys)->str:
 
-#error details
+    #error details
 
         # when returning we will get three things but only 1 of them is importaant for us
         _, _, exec_tb= error_details.exc_info()

@@ -2,15 +2,9 @@ from collections import namedtuple
 
 
 TrainingPipelineConfig = namedtuple("TrainingPipelineConfig",
-                                    [
-                                        "artifact_dir"
-                                    ])
+                                    ["artifact_dir"])
 
 DataIngestionConfig = namedtuple("DataIngestionConfig",
-                                 [
-                                    "dataset_download_url",
-                                     "raw_data_dir",
-                                     "ingested_data_dir"
-                                 ])
+                                 ["dataset_download_url","raw_data_dir","ingested_data_dir"])
 
 

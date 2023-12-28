@@ -4,7 +4,7 @@ from RFM_CUST_SEGMENTATION.exception import CustomException
 from RFM_CUST_SEGMENTATION.logger import logging
 from RFM_CUST_SEGMENTATION.entity.config_entity import DataIngestionConfig
 from RFM_CUST_SEGMENTATION.entity.artifact_entity import DataIngestionArtifact
-from RFM_CUST_SEGMENTATION import constant
+from RFM_CUST_SEGMENTATION.constant import *
 from RFM_CUST_SEGMENTATION.constant.training_pipeline import data_ingestion
 import zipfile
 import shutil
@@ -12,7 +12,7 @@ import shutil
 class DataIngestion:
     def __init__(self,data_ingestion_config: DataIngestionConfig):
         try:
-            logging.info(f"{'>>'*30} Data Ingestion log started.{'<<*30'} \n\n")
+            logging.info(f"{'>>'*30} Data Ingestion log started.{'<<'*30} \n\n")
             self.data_ingestion_config = data_ingestion_config
         except Exception as e:
             CustomException(e,sys)
@@ -67,7 +67,7 @@ class DataIngestion:
             os.makedirs(ingested_file_path, exist_ok=True)
             
             #copy the extracted csv file
-            shutil.copy(raw_file_path, ingested_file_path)
+            shutil.copy2(raw_file_path, ingested_file_path)
             
             #updating file name
             #set the destination directory for ingested data
